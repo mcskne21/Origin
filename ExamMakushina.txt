@@ -1,0 +1,43 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+// Функция для генерации массива из 10 случайных чисел от -50 до 50
+void generate_array(int arr[], int size) {
+    srand(time(0)); // Инициализация генератора случайных чисел
+    for (int i = 0; i < size; i++) {
+        arr[i] = rand() % 101 - 50; // Случайное число от -50 до 50
+    }
+}
+
+// Функция для вывода массива из 10 элементов
+void print_array(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " "; // Вывод элемента массива
+    }
+    cout << endl; // Переход на новую строку
+}
+
+// Функция для поиска минимального элемента массива
+int find_min(int arr[], int size) {
+    int min = arr[0]; // Предполагаем, что первый элемент минимальный
+    for (int i = 1; i < size; i++) {
+        if (arr[i] < min) { // Если нашли элемент меньше минимального
+            min = arr[i]; // Обновляем минимальный элемент
+        }
+    }
+    return min; // Возвращаем минимальный элемент
+}
+
+int main() {
+    const int SIZE = 10; // Константа для размера массива
+    int array[SIZE]; // Объявление массива
+    generate_array(array, SIZE); // Генерация массива
+    cout << "Массив из 10 случайных чисел:" << endl;
+    print_array(array, SIZE); // Вывод массива
+    int min = find_min(array, SIZE); // Поиск минимального элемента
+    cout << "Минимальный элемент массива: " << min << endl;
+    cout << "Квадрат минимального элемента массива: " << min * min << endl;
+    return 0;
+}
